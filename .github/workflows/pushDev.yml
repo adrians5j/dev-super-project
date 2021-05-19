@@ -54,11 +54,11 @@ jobs:
         run: yarn --immutable
 
       # 2. Run static code analysis.
-      - name: Check code formatting
-        run: yarn prettier:check
-
-      - name: ESLint
-        run: yarn eslint
+#      - name: Check code formatting
+#        run: yarn prettier:check
+#
+#      - name: ESLint
+#        run: yarn eslint
 
       # 3. Build custom packages (all packages located within the "packages" folder).
       - name: Build packages
