@@ -4,13 +4,16 @@ on:
   push:
     branches: [dev]
 
+# Ensures only one deployment to "staging" environment can be in progress at the same time.
+concurrency: dev_environment
+
 env:
   NODE_OPTIONS: --max_old_space_size=4096
   AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
   PULUMI_SECRETS_PROVIDER: ${{ secrets.DEV_PULUMI_SECRETS_PROVIDER }}
   PULUMI_CONFIG_PASSPHRASE: ${{ secrets.DEV_PULUMI_CONFIG_PASSPHRASE }}
-  WEBINY_PULUMI_BACKEND: ${{ secrets.DEV_WEBINY_PULUMI_BACKEND }}
+  WEBINY_PULUMI_BACKEND: ${{ enviro.DEV_WEBINY_PULUMI_BACKEND }}
 
 jobs:
   # This first step ensures we don't run the workflow if the repository is empty.

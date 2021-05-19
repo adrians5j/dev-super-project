@@ -4,6 +4,9 @@ on:
   push:
     branches: [prod]
 
+# Ensures only one deployment to "staging" environment can be in progress at the same time.
+concurrency: prod_environment
+
 env:
   NODE_OPTIONS: --max_old_space_size=4096
   AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
