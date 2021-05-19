@@ -65,8 +65,8 @@ jobs:
         run: yarn webiny workspaces run build --folder packages
 
       # 4. Run tests.
-      - name: Run tests
-        run: yarn test
+#      - name: Run tests
+#        run: yarn test
 
       # 5. Deploy to "dev" environment. Note that we do not deploy if the WEBINY_PULUMI_BACKEND
       # variable is missing. We want to have a single central storage of our cloud infrastructure
