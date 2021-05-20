@@ -41,8 +41,10 @@ jobs:
         with:
           node-version: 12
 
-      - name: Install dependencies
-        run: echo "${{env.WEBINY_PULUMI_BACKEND}}"
+      - name: Display the environment variables and their values
+        run: |
+          print %ENV
+        shell: perl {0}
 
       - uses: actions/checkout@v2
 
