@@ -33,12 +33,16 @@ jobs:
   build-test-deploy:
     name: Build and test
     needs: repository-check
-    if: needs.repository-check.outputs.ready == 'true'
     runs-on: ubuntu-latest
+    if: needs.repository-check.outputs.ready == 'true'
+    environment: dev
     steps:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
+
+      - name: Install dependencies
+        run: echo "${{env.WEBINY_PULUMI_BACKEND}}"
 
       - uses: actions/checkout@v2
 
@@ -48,6 +52,7 @@ jobs:
         with:
           path: .yarn/cache
           key: yarn-${{ hashFiles('**/yarn.lock') }}
+
 
       - name: Install dependencies
         run: yarn --immutable
