@@ -40,11 +40,6 @@ jobs:
         with:
           node-version: 12
 
-      - name: Display the environment variables and their values
-        run: |
-          print %ENV
-        shell: perl {0}
-
       - uses: actions/checkout@v2
 
       # 1. Install and cache dependencies.
@@ -59,19 +54,19 @@ jobs:
         run: yarn --immutable
 
       # 2. Run static code analysis.
-#      - name: Check code formatting
-#        run: yarn prettier:check
-#
-#      - name: ESLint
-#        run: yarn eslint
+      - name: Check code formatting
+        run: yarn prettier:check
+
+      - name: ESLint
+        run: yarn eslint
 
       # 3. Build custom packages (all packages located within the "packages" folder).
       - name: Build packages
         run: yarn webiny workspaces run build --folder packages
 
       # 4. Run tests.
-#      - name: Run tests
-#        run: yarn test
+      - name: Run tests
+        run: yarn test
 
       # 5. Deploy to "dev" environment. Note that we do not deploy if the WEBINY_PULUMI_BACKEND
       # variable is missing. We want to have a single central storage of our cloud infrastructure
