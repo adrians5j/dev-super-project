@@ -35,7 +35,6 @@ jobs:
     needs: repository-check
     if: needs.repository-check.outputs.ready == 'true'
     runs-on: ubuntu-latest
-    environment: dev
     steps:
       - uses: actions/setup-node@v2
         with:
