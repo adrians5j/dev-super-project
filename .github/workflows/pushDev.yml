@@ -42,7 +42,7 @@ jobs:
           node-version: 12
 
       - name: Install dependencies
-        run: echo "${{env.WEBINY_PULUMI_BACKEND}}"
+        run: echo "${{environment.WEBINY_PULUMI_BACKEND}}"
 
       - uses: actions/checkout@v2
 
